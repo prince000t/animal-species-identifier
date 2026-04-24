@@ -1,10 +1,13 @@
 import streamlit as st
 import numpy as np
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
 from PIL import Image
 import gdown
 import os
+
+try:
+    from tensorflow.keras.models import load_model
+except:
+    from keras.models import load_model
 
 # Class names
 class_names = ['butterfly', 'cat', 'chicken', 'cow',
@@ -39,7 +42,7 @@ def load_my_model():
     if not os.path.exists(model_path):
         with st.spinner("🔄 AI Model load ho raha hai..."):
             gdown.download(
-                f"https://drive.google.com/uc?id=1RYS-nb-EVaXVhBD7UgN8DexBrNDljMJQ",
+                "https://drive.google.com/uc?id=1RYS-nb-EVaXVhBD7UgN8DexBrNDljMJQ",
                 model_path,
                 quiet=False
             )
